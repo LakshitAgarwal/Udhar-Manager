@@ -14,10 +14,10 @@ export const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-          <button className="px-8 py-3 rounded-full bg-white dark:bg-black text-black dark:text-white font-medium hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors border border-neutral-200 dark:border-neutral-800">
+          <button className="px-8 py-3 rounded-full bg-white cursor-pointer dark:bg-black text-black dark:text-white font-medium hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors border border-neutral-200 dark:border-neutral-800">
             Start Managing Udhaar 🚀
           </button>
-          <button className="px-8 py-3 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors">
+          <button className="px-8 py-3 rounded-full border border-neutral-300 cursor-pointer dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors">
             See How It Works
           </button>
         </div>
