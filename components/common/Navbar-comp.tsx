@@ -10,6 +10,7 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
+import Link from "next/link";
 import { useState } from "react";
 
 export const NavbarComp = () => {
@@ -36,15 +37,17 @@ export const NavbarComp = () => {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              as="button"
-              className="text-white px-3 py-0.5 cursor-pointer"
-            >
-              Login
-            </HoverBorderGradient>
-          </div>
+          <Link href="/sign-in">
+            <div className="flex items-center gap-4">
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="button"
+                className="text-white px-3 py-0.5 cursor-pointer"
+              >
+                Login
+              </HoverBorderGradient>
+            </div>
+          </Link>
         </NavBody>
 
         {/* Mobile Navigation */}
