@@ -6,28 +6,13 @@ import prisma from "@/lib/db"; // Your Prisma client instance
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const timestamp = new Date().toISOString();
-  console.log(`🔥 [${timestamp}] Webhook received!`);
-
-  // Log request details
-  const url = new URL(req.url);
-  const userAgent = req.headers.get("user-agent");
-  const origin = req.headers.get("origin");
-  const referer = req.headers.get("referer");
-
-  console.log(`📡 [${timestamp}] Request details:`, {
-    url: url.pathname,
-    userAgent,
-    origin,
-    referer,
-    method: req.method,
-  });
+  console.log("🔥 Webhook received!");
 
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
-    console.error(`❌ [${timestamp}] WEBHOOK_SECRET is missing!`);
+    console.error("❌ WEBHOOK_SECRET is missing!");
     throw new Error(
       "Please add CLERK_WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
     );
@@ -41,11 +26,19 @@ export async function POST(req: Request) {
 
   // If there are no headers, error out
   if (!svix_id || !svix_timestamp || !svix_signature) {
-    console.error(`❌ [${timestamp}] Missing svix headers`);
+    console.error("❌ Missing svix headers");
     return new Response("Error occured -- no svix headers", {
       status: 400,
     });
   }
+
+  // Log webhook details for debugging
+  console.log("📡 Webhook Details:", {
+    svix_id,
+    svix_timestamp,
+    webhook_time: new Date(parseInt(svix_timestamp) * 1000).toISOString(),
+    current_time: new Date().toISOString(),
+  });
 
   // Get the body
   const payload = await req.json();
@@ -63,9 +56,9 @@ export async function POST(req: Request) {
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,
     }) as WebhookEvent;
-    console.log(`✅ [${timestamp}] Webhook verification successful`);
+    console.log("✅ Webhook verification successful");
   } catch (err) {
-    console.error(`❌ [${timestamp}] Error verifying webhook:`, err);
+    console.error("❌ Error verifying webhook:", err);
     return new Response("Error occured", {
       status: 400,
     });
@@ -75,42 +68,26 @@ export async function POST(req: Request) {
   const { id } = evt.data;
   const eventType = evt.type;
 
-  console.log(
-    `🎯 [${timestamp}] Webhook with an ID of ${id} and type of ${eventType}`
-  );
-  console.log(`📊 [${timestamp}] Event metadata:`, {
-    eventType,
-    eventId: id,
-    svixId: svix_id,
-    svixTimestamp: svix_timestamp,
-    instanceId: payload.instance_id,
-    objectType: payload.object,
-  });
-  console.log(
-    `📋 [${timestamp}] Full event data:`,
-    JSON.stringify(evt.data, null, 2)
-  );
+  console.log(`🎯 Webhook: ID=${id}, Type=${eventType}, SvixID=${svix_id}`);
+  console.log("📋 Full event data:", JSON.stringify(evt.data, null, 2));
 
   // Handle the event
   if (eventType === "user.created") {
-    console.log(`👤 [${timestamp}] Handling user.created event`);
+    console.log("👤 Handling user.created event");
 
     const { id, email_addresses, image_url, first_name, last_name } = evt.data;
 
     if (!email_addresses || email_addresses.length === 0) {
-      console.error(
-        `❌ [${timestamp}] User has no email address. Cannot create user in DB.`,
-        {
-          clerkId: id,
-        }
-      );
+      console.error("❌ User has no email address. Cannot create user in DB.", {
+        clerkId: id,
+      });
       return NextResponse.json(
         { error: "User has no email address" },
         { status: 400 }
       );
     }
 
-    console.log(`📝 [${timestamp}] User data:`, {
+    console.log("📝 User data:", {
       id,
       email_addresses,
       image_url,
@@ -134,19 +111,13 @@ export async function POST(req: Request) {
           imageUrl: image_url,
         },
       });
-      console.log(
-        `✅ [${timestamp}] User created/updated successfully in database:`,
-        result
-      );
+      console.log("✅ User created/updated successfully in database:", result);
       return NextResponse.json(
         { message: "User created or updated" },
         { status: 201 }
       );
     } catch (error) {
-      console.error(
-        `❌ [${timestamp}] Failed to create user in database:`,
-        error
-      );
+      console.error("❌ Failed to create user in database:", error);
       return NextResponse.json(
         { error: "Failed to create user" },
         { status: 500 }
@@ -155,24 +126,21 @@ export async function POST(req: Request) {
   }
 
   if (eventType === "user.updated") {
-    console.log(`✏️ [${timestamp}] Handling user.updated event`);
+    console.log("✏️ Handling user.updated event");
 
     const { id, email_addresses, image_url, first_name, last_name } = evt.data;
 
     if (!email_addresses || email_addresses.length === 0) {
-      console.error(
-        `❌ [${timestamp}] User has no email address. Cannot update user in DB.`,
-        {
-          clerkId: id,
-        }
-      );
+      console.error("❌ User has no email address. Cannot update user in DB.", {
+        clerkId: id,
+      });
       return NextResponse.json(
         { error: "User has no email address" },
         { status: 400 }
       );
     }
 
-    console.log(`📝 [${timestamp}] User update data:`, {
+    console.log("📝 User update data:", {
       id,
       email_addresses,
       image_url,
@@ -196,16 +164,10 @@ export async function POST(req: Request) {
           imageUrl: image_url,
         },
       });
-      console.log(
-        `✅ [${timestamp}] User updated successfully in database:`,
-        result
-      );
+      console.log("✅ User updated successfully in database:", result);
       return NextResponse.json({ message: "User updated" }, { status: 200 });
     } catch (error) {
-      console.error(
-        `❌ [${timestamp}] Failed to update user in database:`,
-        error
-      );
+      console.error("❌ Failed to update user in database:", error);
       return NextResponse.json(
         { error: "Failed to update user" },
         { status: 500 }
@@ -214,7 +176,7 @@ export async function POST(req: Request) {
   }
 
   if (eventType === "user.deleted") {
-    console.log(`🗑️ [${timestamp}] Handling user.deleted event`);
+    console.log("🗑️ Handling user.deleted event");
 
     try {
       const result = await prisma.user.delete({
@@ -222,16 +184,10 @@ export async function POST(req: Request) {
           clerkId: evt.data.id,
         },
       });
-      console.log(
-        `✅ [${timestamp}] User deleted successfully from database:`,
-        result
-      );
+      console.log("✅ User deleted successfully from database:", result);
       return NextResponse.json({ message: "User deleted" }, { status: 200 });
     } catch (error) {
-      console.error(
-        `❌ [${timestamp}] Failed to delete user from database:`,
-        error
-      );
+      console.error("❌ Failed to delete user from database:", error);
       return NextResponse.json(
         { error: "Failed to delete user" },
         { status: 500 }
@@ -239,6 +195,6 @@ export async function POST(req: Request) {
     }
   }
 
-  console.log(`ℹ️ [${timestamp}] Unhandled event type:`, eventType);
+  console.log("ℹ️ Unhandled event type:", eventType);
   return new Response("", { status: 200 });
-}
+} 
