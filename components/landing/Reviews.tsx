@@ -5,39 +5,39 @@ import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 const testimonials = [
   {
     quote:
-      "Finally, no more awkward conversations about money! The WhatsApp reminders are so polite and professional. I got back ₹25,000 that I thought was lost forever. This app saved my relationships and my wallet.",
+      "Vouchly's intelligence platform drove a 340% increase in our review velocity while maintaining 4.9-star quality. The ROI attribution directly connected reputation growth to revenue expansion.",
     name: "Priya Sharma",
-    title: "Small Business Owner, Mumbai",
+    title: "Chief Executive Officer, Premier Medical Group",
   },
   {
     quote:
-      "I used to maintain a messy notebook for tracking loans. This platform changed everything - beautiful dashboard, automatic reminders, and 100% recovery rate. My friends actually appreciate the gentle nudges!",
+      "The sophistication of Vouchly's behavioral analytics exceeded our expectations. Automated sentiment routing protected our brand while systematic engagement drove measurable competitive positioning gains.",
     name: "Rahul Verma",
-    title: "Software Engineer, Bangalore",
+    title: "Managing Director, Fitness Enterprise Network",
   },
   {
     quote:
-      "As someone who lends money frequently, this app is a lifesaver. The analytics show me who pays on time, and the automated system maintains relationships while ensuring I get paid back.",
+      "Vouchly's enterprise orchestration platform transformed our customer experience strategy. The precision timing and multi-channel sequencing delivered a 30% revenue lift through reputation-driven acquisition.",
     name: "Anjali Gupta",
-    title: "Freelance Consultant, Delhi",
+    title: "Chief Operating Officer, Hospitality Ventures",
   },
   {
     quote:
-      "I was skeptical about debt management apps, but this one actually works. The interface is intuitive, reminders are respectful, and I&apos;ve recovered 95% of my outstanding loans within 3 months.",
+      "Vouchly's risk management capabilities proved invaluable for our multi-location operation. The predictive sentiment analysis and private feedback routing protected our brand equity while scaling positive exposure.",
     name: "Arjun Patel",
-    title: "Marketing Manager, Pune",
+    title: "Chief Executive Officer, Wellness Holdings",
   },
   {
     quote:
-      "The multi-currency feature is amazing for my international business. No more tracking USD and INR loans separately. The conversion rates are accurate and the WhatsApp integration is seamless.",
+      "The platform's AI-driven channel optimization delivered unprecedented engagement rates. Our review conversion efficiency increased 8x while maintaining the premium customer experience our brand demands.",
     name: "Sneha Reddy",
-    title: "Import/Export Business, Chennai",
+    title: "Chief Marketing Officer, Luxury Beauty Collective",
   },
   {
     quote:
-      "Lost friendships over money are now a thing of the past. The polite reminder system works perfectly - my friends pay back without any friction, and our relationships remain strong.",
+      "Vouchly's systematic approach to reputation architecture transformed our market positioning. The intelligent automation and analytics dashboard provided the strategic insights needed to dominate our category.",
     name: "Vikram Singh",
-    title: "Real Estate Agent, Gurgaon",
+    title: "Chief Executive Officer, Automotive Services Group",
   },
 ];
 
@@ -46,20 +46,20 @@ export const Reviews = () => {
     <div className="py-20 px-4 max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="text-center mb-16">
-        <div className="text-purple-400 text-xs border border-purple-400 rounded-full px-4 py-2 w-fit mx-auto mb-6 shadow-lg shadow-purple-400/30 bg-purple-400/10 backdrop-blur-sm">
-          ⭐ Customer Reviews
+        <div className="text-neutral-400 text-xs border border-neutral-700 rounded-full px-4 py-2 w-fit mx-auto mb-6 bg-neutral-900/50 backdrop-blur-sm">
+          Client testimonials
         </div>
 
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-200 dark:via-white dark:to-white leading-tight mb-6">
-          What our users say about{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
-            getting their money back
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-neutral-300 leading-tight mb-6 tracking-tight">
+          Trusted by market{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-200 to-neutral-400">
+            leaders
           </span>
         </h2>
 
-        <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-          Join thousands of satisfied users who&apos;ve successfully recovered
-          their money while maintaining great relationships.
+        <p className="text-xl text-neutral-400 max-w-4xl mx-auto leading-relaxed font-light">
+          Leading enterprises choose Vouchly to systematically build the
+          reputation that drives sustainable competitive advantage.
         </p>
       </div>
 
@@ -72,7 +72,6 @@ export const Reviews = () => {
           className="py-8"
         />
       </div>
-
     </div>
   );
 };

@@ -6,19 +6,20 @@ export const WhatWeOffer = () => {
       {/* Header Section */}
       <div className="text-center mb-16">
         <div className="text-green-400 text-xs border border-green-400 rounded-full px-4 py-2 w-fit mx-auto mb-6 shadow-lg shadow-green-400/30 bg-green-400/10 backdrop-blur-sm">
-          💰 What We Offer
+          ⭐ What We Offer
         </div>
 
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-200 dark:via-white dark:to-white leading-tight mb-6">
-          Everything you need to manage your{" "}
+          Everything you need to get more{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400">
-            financial relationships
+            5-star reviews
           </span>
         </h2>
 
         <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-          From tracking loans to automated reminders, we&apos;ve got all the
-          tools to make debt management stress-free and relationship-friendly.
+          From automated review requests to private feedback collection,
+          we&apos;ve got all the tools to boost your online reputation and
+          attract more customers.
         </p>
       </div>
 
@@ -42,12 +43,13 @@ export const WhatWeOffer = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">
-              Smart Debt Tracking
+            <h3 className="text-xl font-medium text-white mb-3">
+              Intelligent Campaign Orchestration
             </h3>
-            <p className="text-neutral-300 leading-relaxed">
-              Effortlessly track all your loans, borrowings, and lendings in one
-              place with intuitive dashboards and real-time updates.
+            <p className="text-neutral-400 leading-relaxed font-light">
+              AI-powered timing optimization and multi-channel sequencing that
+              maximizes review conversion while maintaining customer
+              satisfaction.
             </p>
           </div>
         </CardSpotlight>
@@ -71,11 +73,11 @@ export const WhatWeOffer = () => {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-white mb-3">
-              WhatsApp Reminders
+              Multi-Channel Messaging
             </h3>
             <p className="text-neutral-300 leading-relaxed">
-              Automated, polite reminders sent via WhatsApp to maintain
-              relationships while ensuring timely payments.
+              Reach customers on their preferred platform with professionally
+              crafted messages that encourage positive reviews.
             </p>
           </div>
         </CardSpotlight>
@@ -99,11 +101,11 @@ export const WhatWeOffer = () => {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-white mb-3">
-              Progress Analytics
+              Review Analytics
             </h3>
             <p className="text-neutral-300 leading-relaxed">
-              Visual insights and analytics to track payment patterns, success
-              rates, and debt recovery progress.
+              Track your review growth, response rates, and customer
+              satisfaction with detailed analytics and insights.
             </p>
           </div>
         </CardSpotlight>
