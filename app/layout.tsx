@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Udhar Manager - Track Your Debt, Get Your Money Back",
+  title: "Vouchly - Turn Happy Customers Into 5-Star Reviews",
   description:
-    "Smart debt management tools to help you track, organize, and eliminate debt faster. Your journey to financial freedom starts here.",
+    "Automatically ask customers for Google reviews via WhatsApp, SMS & email. Get more positive reviews and attract new customers effortlessly.",
 };
 
 export default function RootLayout({
